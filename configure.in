@@ -55,6 +55,11 @@ AC_PATH_PROG(AR, ar)
 AC_HEADER_STDC
 AC_C_CONST
 
+GLIB_REQUIRED_VERSION=2.2.3
+
+AM_PATH_GLIB_2_0($GLIB_REQUIRED_VERSION, have_glib=yes,
+  AC_MSG_ERROR([GLib $GLIB_REQUIRED_VERSION or better is required]))
+
 if test "x$GCC" != "xyes"; then
   AC_MSG_ERROR(GCC is required)
 fi
@@ -63,13 +68,6 @@ AC_PATH_PROG(MPICC, mpicc)
 if test "x$MPICC" = "x"; then
   AC_MSG_ERROR([mpicc not found. Install openmpi-libs, openmpi-devel, openmpi and mpi-selector packages. Use mpi-selector to set it as default.])
 fi
-
-AC_CHECK_LIB(aio, io_setup, [
-  AC_CHECK_HEADER(libaio.h, :, [
-    AC_MSG_ERROR([Unable to find libaio header])
-  ])], [
-    AC_MSG_ERROR([Unable to find the libaio library])
-  ])
 
 COM_ERR_LIBS=
 PKG_CHECK_MODULES(COM_ERR, com_err,, [
@@ -102,6 +100,17 @@ PKG_CHECK_MODULES(O2DLM, o2dlm,, [
   AC_CHECK_HEADER(o2dlm/o2dlm.h, :,
     AC_MSG_ERROR([Unable to find o2dlm headers]))
   AC_SUBST(O2DLM_LIBS)
+])
+
+AIO_LIBS=
+PKG_CHECK_MODULES(AIO, aio,, [
+  AC_CHECK_LIB(aio, io_setup, AIO_LIBS=-laio)
+  if test "x$AIO_LIBS" = "x"; then
+    AC_MSG_ERROR([Unable to find libaio library])
+  fi
+  AC_CHECK_HEADER(libaio.h, :,
+   AC_MSG_ERROR([Unable to find /usr/include/libaio.h]))
+  AC_SUBST(AIO_LIBS)
 ])
 
 OCFS2_LIBS=

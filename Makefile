@@ -22,7 +22,7 @@ ifeq ($(TESTARCH),error)
 $(error could not detect architecture for ocfs2-test)
 endif
 
-SUBDIRS = api-compat programs utilities tests suites
+SUBDIRS = include libo2dlm libo2cb libocfs2 api-compat programs utilities tests suites
 
 SUBDIRS += vendor
 
@@ -43,6 +43,7 @@ DIST_FILES = \
 	python.m4				\
 	pythondev.m4				\
 	runlog.m4				\
+	glib-2.0.m4                             \
 	config.guess				\
 	config.sub				\
 	configure				\
