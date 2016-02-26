@@ -1,0 +1,5 @@
+cscope*
+stamp-md5
+*.sw?
+*.cmd
+ocfs2_err.h

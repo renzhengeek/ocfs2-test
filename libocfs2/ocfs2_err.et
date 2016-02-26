@@ -1,0 +1,201 @@
+#
+# ocfs2_err.et
+#
+# Error codes for the OCFS2 userspace library.
+#
+# Copyright (C) 2004, 2007 Oracle.  All rights reserved.
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public
+# License, version 2,  as published by the Free Software Foundation.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public
+# License along with this program; if not, write to the
+# Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+# Boston, MA 021110-1307, USA.
+#
+	error_table ocfs
+
+ec	OCFS2_ET_NAMED_DEVICE_NOT_FOUND,
+	"Device name specified was not found"
+
+ec	OCFS2_ET_BAD_DEVICE_NAME,
+	"Illegal or malformed device name"
+
+ec	OCFS2_ET_IO,
+	"I/O error on channel"
+
+ec	OCFS2_ET_SHORT_READ,
+	"Attempt to read block from filesystem resulted in short read"
+
+ec	OCFS2_ET_SHORT_WRITE,
+	"Attempt to write block to the filesystem resulted in short write"
+
+ec	OCFS2_ET_NO_MEMORY,
+	"Memory allocation failed"
+
+ec	OCFS2_ET_INVALID_ARGUMENT,
+	"Invalid argument passed to OCFS2 library"
+
+ec	OCFS2_ET_OCFS_REV,
+	"Device contains an OCFS volume"
+
+ec	OCFS2_ET_BAD_MAGIC,
+	"Bad magic number in superblock"
+
+ec	OCFS2_ET_UNEXPECTED_BLOCK_SIZE,
+	"Filesystem has unexpected block size"
+
+ec	OCFS2_ET_CORRUPT_SUPERBLOCK,
+	"The OCFS2 superblock is corrupt"
+
+ec	OCFS2_ET_UNSUPP_FEATURE,
+	"Unsupported feature(s) found"
+
+ec	OCFS2_ET_RO_UNSUPP_FEATURE,
+	"Unsupported read-only feature(s) found"
+
+ec	OCFS2_ET_CONFLICTING_FEATURES,
+	"Conflicting features specified"
+
+ec	OCFS2_ET_BAD_INODE_MAGIC,
+	"Bad magic number in inode"
+
+ec	OCFS2_ET_BAD_BLKNO,
+	"Invalid block number"
+
+ec	OCFS2_ET_RO_FILESYS,
+	"Attempt to write to filesystem opened read-only"
+
+ec	OCFS2_ET_JOURNAL_TOO_SMALL,
+	"Journal must be at least 1024 blocks"
+
+ec	OCFS2_ET_BAD_JOURNAL_SUPERBLOCK_MAGIC,
+	"Bad magic number in journal superblock"
+
+ec	OCFS2_ET_BAD_JOURNAL_REVOKE,
+	"Invalid revoke record in journal"
+
+ec	OCFS2_ET_BAD_JOURNAL_TAG,
+	"Invalid block tag in journal"
+
+ec	OCFS2_ET_INODE_NOT_VALID,
+	"Inode is not valid (active)"
+
+ec	OCFS2_ET_INODE_CANNOT_BE_ITERATED,
+	"Inode type does not contain extents"
+
+ec	OCFS2_ET_BAD_EXTENT_BLOCK_MAGIC,
+	"Bad magic number in extent block"
+
+ec	OCFS2_ET_CORRUPT_EXTENT_BLOCK,
+	"Extent block is corrupt"
+
+ec	OCFS2_ET_DIR_CORRUPTED,
+	"OCFS2 directory corrupted"
+
+ec	OCFS2_ET_NO_DIRECTORY,
+	"OCFS2 inode is not a directory"
+
+ec	OCFS2_ET_FILE_NOT_FOUND,
+	"Directory entry not found"
+
+ec	OCFS2_ET_DIR_NO_SPACE,
+	"No free space in the directory"
+
+ec	OCFS2_ET_INVALID_BIT,
+	"Bit does not exist in bitmap range"
+
+ec	OCFS2_ET_INTERNAL_FAILURE,
+	"Internal logic faliure"
+
+ec	OCFS2_ET_BAD_GROUP_DESC_MAGIC,
+	"Bad magic number in group descriptor"
+
+ec	OCFS2_ET_CORRUPT_GROUP_DESC,
+	"Group descriptor is corrupt"
+
+ec	OCFS2_ET_CORRUPT_CHAIN,
+	"Chain allocator is corrupt"
+
+ec	OCFS2_ET_INVALID_EXTENT_LOOKUP,
+	"Invalid range passed to extent map lookup"
+
+ec	OCFS2_ET_EXTENT_NOT_FOUND,
+	"No mapping exists for the given extent range"
+
+ec	OCFS2_ET_DUPLICATE_BLOCK,
+	"Duplicate block discovered"
+
+ec	OCFS2_ET_BIT_NOT_FOUND,
+	"Unable to find available bit"
+
+ec	OCFS2_ET_FREEING_UNALLOCATED_REGION,
+	"Attempting to free unallocated region"
+
+ec	OCFS2_ET_EXPAND_DIR_ERR,
+	"Unable to expand directory"
+
+ec	OCFS2_ET_NO_SPACE,
+	"No space available"
+
+ec	OCFS2_ET_ITERATION_COMPLETE,
+	"Iteration complete"
+
+ec	OCFS2_ET_SYMLINK_LOOP,
+	"Too many symbolic links encountered"
+
+ec	OCFS2_ET_BAD_HEARTBEAT_FILE,
+	"Invalid heartbeat file"
+
+ec	OCFS2_ET_UNKNOWN_FILESYSTEM,
+	"Unknown filesystem"
+
+ec	OCFS2_ET_BLOCK_SIZE_TOO_SMALL_FOR_HARDWARE,
+	"The block size is smaller than the sector size on this device"
+
+ec	OCFS2_ET_INVALID_LOCKRES,
+	"The lock name is invalid"
+
+ec	OCFS2_ET_NO_IONICE,
+	"Unable to find ionice(1)"
+
+ec	OCFS2_ET_NO_BACKUP_SUPER,
+	"Backup superblock not found"
+
+ec      OCFS2_ET_TOO_MANY_SLOTS,
+        "Too many slots for slot map"
+
+ec	OCFS2_ET_CANNOT_INLINE_DATA,
+	"Unable to write the data inline"
+
+ec	OCFS2_ET_BAD_DIR_BLOCK_MAGIC,
+	"Bad magic number in directory block"
+
+ec	OCFS2_ET_BAD_XATTR_BLOCK_MAGIC,
+	"Bad magic number in xattr block"
+
+ec	OCFS2_ET_UNKNOWN_FEATURE,
+	"Unknown feature"
+
+ec	OCFS2_ET_CORRUPT_QUOTA_FILE,
+	"Quota file is corrupted"
+
+ec	OCFS2_ET_CANNOT_DETERMINE_SECTOR_SIZE,
+	"Unable to determine the sector size"
+
+ec	OCFS2_ET_DX_BALANCE_EMPTY_LEAF,
+	"Trying to rebalance empty leaf for indexed dir"
+
+ec	OCFS2_ET_NONEMTY_QUOTA_HASH,
+	"Freeing non-empty quota hash"
+
+ec	OCFS2_ET_BAD_CRC32,
+	"Bad CRC32"
+
+	end

@@ -1,0 +1,10 @@
+cscope*
+stamp-md5
+*.sw?
+*.cmd
+ocfs2_err.c
+ocfs2_err.h
+libocfs2.a
+debug_*
+*.d
+ocfs2.7
