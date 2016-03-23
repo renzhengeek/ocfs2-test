@@ -5,13 +5,13 @@
 # descritpion: 	This script will perform a thorough single node test on online
 #               filecheck for OCFS2. Following testcases will be involed.
 #
-# 1. inode block: inode number, inode generation, block ECC 
+# 1. inode block: inode number, inode generation, block ECC
 #
 # Author:	Eric Ren,	zren@suse.com
 # History:	22 Mar, 2016
 #
 # Copyright (C) 2016 SUSE.  All rights reserved.
-# 
+#
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public
 # License as published by the Free Software Foundation, version 2.
@@ -40,11 +40,16 @@ LABELNAME=ocfs2-filecheck-tests
 OCFS2_DEVICE=
 MOUNT_POINT=
 MOUNT_OPTS="errors=continue"
+FEATURES="local,metaecc"
+BLOCKSIZE=4096
+CLUSTERSIZE=32768
 WORKSPACE=
 
 DEFAULT_LOG="filecheck-test-logs"
 LOG_OUT_DIR=
 DETAIL_LOG_FILE=
+
+TEST_NO=0
 
 set -o pipefail
 
@@ -104,7 +109,7 @@ f_do_mkfs_and_mount()
 {
        echo -n "Mkfsing device:" | tee -a ${RUN_LOG_FILE}
 
-       echo y | ${MKFS_BIN} --fs-features=local --label ${LABELNAME} -b 512 -C 4096 ${OCFS2_DEVICE} >> ${RUN_LOG_FILE} 2>&1
+       echo y | ${MKFS_BIN} --fs-features=${FEATURES} --label ${LABELNAME} -b ${BLOCKSIZE} -C ${CLUSTERSIZE} ${OCFS2_DEVICE} >> ${RUN_LOG_FILE} 2>&1
        RET=$?
        f_echo_status ${RET} | tee -a ${RUN_LOG_FILE}
        f_exit_or_not ${RET}
@@ -136,6 +141,16 @@ f_do_umount()
 f_runtest()
 {
        # put testing units here
+       f_do_mkfs_and_mount
+
+       ((TEST_NO++))
+       echo -ne "[${TEST_NO}] Inode block corrupt & check & fix:" | tee -a ${RUN_LOG_FILE}
+       ./inode_block_test.sh -d ${OCFS2_DEVICE} -m ${MOUNT_POINT} -l ${LOG_OUT_DIR}
+       RET=$?
+       f_echo_status ${RET} | tee -a ${RUN_LOG_FILE}
+       f_exit_or_not ${RET}
+
+       f_do_umount
 }
 
 function f_cleanup()
